@@ -9,9 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@authaction/server-sdk": "file:../authaction-server-sdk",
     "@sveltejs/kit": "^2.7.0",
-    "svelte": "^5.0.0",
-    "arctic": "^2.1.0"
+    "svelte": "^5.0.0"
   },
   "devDependencies": {
     "@sveltejs/adapter-node": "^5.2.0",

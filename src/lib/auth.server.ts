@@ -1,14 +1,10 @@
-import { Arctic, OAuth2Client } from 'arctic';
+import { createSvelteAuth } from '@authaction/server-sdk/svelte';
+import { env } from '$env/dynamic/private';
 
-const domain = process.env.AUTHACTION_TENANT_DOMAIN!;
-
-export const oauth2Client = new OAuth2Client(
-  process.env.AUTHACTION_CLIENT_ID!,
-  process.env.AUTHACTION_CLIENT_SECRET!,
-  process.env.AUTHACTION_REDIRECT_URI!
-);
-
-export const authorizationEndpoint = `https://${domain}/oauth2/authorize`;
-export const tokenEndpoint = `https://${domain}/oauth2/token`;
-export const userinfoEndpoint = `https://${domain}/oauth2/userinfo`;
-export const logoutEndpoint = `https://${domain}/oidc/logout`;
+export const auth = createSvelteAuth({
+  domain: env.AUTHACTION_DOMAIN,
+  clientId: env.AUTHACTION_CLIENT_ID,
+  clientSecret: env.AUTHACTION_CLIENT_SECRET,
+  redirectUri: env.AUTHACTION_REDIRECT_URI,
+  sessionSecret: env.SESSION_SECRET,
+});
